@@ -3,10 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["first_name","Last_name","username","email","password1","password2"].value;
+  if (x == "" || x == null) {
+    alert("Please fill out all details");
+    return false;
+  }
+}
+</script>
 </head>
 <body>
 
-<form action="register" method="post">
+<form name="myForm" action="register" onsubmit="return validateForm()" method="post" required>
     {% csrf_token %}
 
     <input type="text" name="first_name" placeholder="Enter First name"> <br>
@@ -15,7 +24,7 @@
     <input type="email" name="email" placeholder="Enter Email"> <br>
     <input type="password" name="password1" placeholder="Enter Password"><br>
     <input type="password" name="password2" placeholder="Confirm password"><br>
-    <input type="submit">
+    <input type="submit" value="Submit">
 </form>
 
 <div>
